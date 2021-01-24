@@ -1,7 +1,7 @@
+import React, { useState, useEffect } from "react";
 import Game from "./components/game/Game";
 import "antd/dist/antd.css";
 import { Row, Col } from "antd";
-import Gop from "./components/gopsem/Gop";
 function App() {
   return (
     <>
@@ -17,15 +17,7 @@ function App() {
           </div>
         </Col>
       </Row>
-      {/* 곱셈 및 보드 */}
-      <Row style={{ marginTop: "100px" }}>
-        <Col span={12}>
-          <Game style={{ margin: "auto" }} />
-        </Col>
-        <Gop />
-
-        <Col span={12}>데헷</Col>
-      </Row>
+      <Game style={{ margin: "auto" }} />
     </>
   );
 }

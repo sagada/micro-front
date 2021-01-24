@@ -1,53 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Table, Tag, Space } from "antd";
-const Solution = () => {
+const Solution = ({ recentResult }) => {
+  const [data, setData] = useState();
   const columns = [
     {
       title: "답변 ID",
       dataIndex: "sol_id",
+      key: "sol_id",
     },
     {
       title: "곱셈",
       dataIndex: "factors",
+      key: "factors",
     },
     {
       title: "입력한 값",
       dataIndex: "input_answer",
+      key: "input_answer",
     },
     {
       title: "정답?",
       dataIndex: "result",
+      key: "result",
     },
   ];
-
-  const data = [
-    {
-      key: "1",
-      sol_id: "1",
-      factors: "2X3",
-      input_answer: "New York No. 1 Lake Park",
-      result: ["nice", "developer"],
-    },
-    {
-      key: "2",
-      sol_id: "2",
-      factors: "1X3",
-      input_answer: "London No. 1 Lake Park",
-      result: ["loser"],
-    },
-    {
-      key: "3",
-      sol_id: "3",
-      factors: "4X4",
-      input_answer: "Sidney No. 1 Lake Park",
-      result: ["cool", "teacher"],
-    },
-  ];
+  useEffect(() => {}, [data]);
   return (
-    <div>
-      <p style={{ fontSize: "30px" }}>최근 답안</p>
-      <Table columns={columns} dataSource={data} pagination={false} />
-    </div>
+    <>
+      {recentResult == null ? null : (
+        <div style={{ width: "60%", margin: "auto" }}>
+          <p style={{ fontSize: "30px" }}>최근 답안</p>
+          <Table
+            columns={columns}
+            dataSource={recentResult}
+            pagination={false}
+          />
+        </div>
+      )}
+    </>
   );
 };
 
