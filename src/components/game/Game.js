@@ -37,7 +37,7 @@ const Game = () => {
   const answerSubmit = async () => {
     let responseUserId;
     await axios
-      .post("http://localhost:8080/results", {
+      .post("http://localhost:8000/api/results", {
         user: { alias: userId },
         multiplication: { factorA: fa, factorB: fb },
         resultAttempt: answer,
@@ -52,13 +52,13 @@ const Game = () => {
         }
       });
 
-    const result = await axios.get(`http://localhost:8081/stats`, {
+    const result = await axios.get(`http://localhost:8000/api/stats`, {
       params: { userId: responseUserId },
     });
     setStatInfo(result);
     console.log(result);
 
-    const ret = await axios.get(`http://localhost:8080/results`, {
+    const ret = await axios.get(`http://localhost:8000/api/results`, {
       params: { alias: userId },
     });
 
@@ -82,7 +82,7 @@ const Game = () => {
     const getMultiplication = async () => {
       try {
         const result = await axios.get(
-          `http://localhost:8080/multiplications/random`
+          `http://localhost:8000/api/multiplications/random`
         );
         setAnswer();
         setMultiplicateion(result.data);

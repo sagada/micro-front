@@ -7,7 +7,7 @@ const LeaderBoard = () => {
     console.log("LeaderBoard useEffect");
     const getBoardData = async () => {
       try {
-        const result = await axios.get(`http://localhost:8081/leaders`);
+        const result = await axios.get(`http://localhost:8000/api/leaders`);
         console.log("leaderbadge", result);
         let o = [];
         for (let i = 0; i < result.data.length; i++) {
